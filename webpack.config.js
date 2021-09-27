@@ -9,6 +9,7 @@ module.exports = {
     },
     devServer: {
         hot: false,
+        https: true,
         client: {
             overlay: {
                 errors: true,
@@ -38,7 +39,7 @@ module.exports = {
             name: 'MainApplication',
             filename: 'remoteEntry.js',
             remotes: {
-                MapApplication: 'MapApplication@http://localhost:8888/remoteEntry.js'
+                MapApplication: 'MapApplication@https://localhost:8888/remoteEntry.js'
             }
         }),
         new HtmlWebpackPlugin({
