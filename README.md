@@ -1,0 +1,1 @@
+# Microfrontend PoC Consumer application

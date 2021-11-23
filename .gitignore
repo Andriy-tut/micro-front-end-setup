@@ -1,2 +1,5 @@
 node_modules
 build
+
+# OS specific files
+.DS_Store
