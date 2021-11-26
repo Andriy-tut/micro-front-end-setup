@@ -10,6 +10,7 @@ module.exports = {
     devServer: {
         hot: false,
         https: true,
+        historyApiFallback: true,
         client: {
             overlay: {
                 errors: true,

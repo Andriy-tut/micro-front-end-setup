@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './Header';
 import Icons from './Icons';
+import Routes from './Routes';
 import Sidebar from './Sidebar';
 
 const appStyles: React.CSSProperties = {
@@ -19,9 +20,6 @@ const mainStyles = {
 };
 
 const App = () => {
-    React.useEffect(() => {
-        import('../mapApplication.js').then(() => console.log('Map loaded!'));
-    }, []);
     return (
         <>
             <Icons />
@@ -29,12 +27,7 @@ const App = () => {
                 <Header />
                 <main style={mainStyles}>
                     <Sidebar />
-                    <div className="container-fluid">
-                        Main application content
-                        <div id="map">
-                            Loading...
-                        </div>
-                    </div>
+                    <Routes />
                 </main>
             </div>
         </>
