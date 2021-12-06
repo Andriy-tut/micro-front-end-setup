@@ -1,9 +1,10 @@
 const path = require('path');
+const { dependencies } = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
-    entry: path.join(__dirname, 'src', 'index.tsx'),
+    entry: path.join(__dirname, 'src', 'index.ts'),
     output: {
         path: path.resolve(__dirname, 'build'),
     },
@@ -31,7 +32,11 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ["@babel/preset-typescript", '@babel/preset-env', '@babel/preset-react'],
+                        presets: [
+                            '@babel/preset-typescript',
+                            ['@babel/preset-env', { runtime: 'automatic' }],
+                            '@babel/preset-react'
+                        ],
                         plugins: [
                             '@babel/plugin-transform-runtime',
                         ],
@@ -46,11 +51,24 @@ module.exports = {
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'MainApplication',
+            name: 'Main',
             filename: 'remoteEntry.js',
             remotes: {
-                MapApplication: 'MapApplication@https://micro-fe-provider.web.app/remoteEntry.js'
-            }
+                MapApplication: 'MapApplication@https://localhost:8888/remoteEntry.js'
+            },
+            shared: {
+                ...dependencies,
+                react: {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: dependencies['react'],
+                },
+                'react-dom': {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: dependencies['react-dom'],
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'public', 'index.html'),
