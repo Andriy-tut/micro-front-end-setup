@@ -1,7 +1,7 @@
 {
-  "name": "micro-front-end-setup",
-  "version": "1.0.0",
-  "description": "Micro front-end setup",
+  "name": "core-mfe-application",
+  "version": "1.1.0",
+  "description": "Micro front-end application",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode=development",
