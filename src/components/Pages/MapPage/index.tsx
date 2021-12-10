@@ -1,12 +1,11 @@
 import React from 'react';
+
+import './styles.css';
+// TODO: add correct type declaration for Map application components
 //@ts-ignore
 const Map = React.lazy(() => import('MapApplication/app'));
 
 const MapPage = () => {
-    // React.useEffect(() => {
-    //     import('../../../mapApplication.js').then(() => console.log('Map loaded!'));
-    // }, []);
-    
     return (
         <div id="map">
             <React.Suspense fallback="Loading...">

@@ -22,6 +22,14 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                type: 'asset/resource'
+            },
+            {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
