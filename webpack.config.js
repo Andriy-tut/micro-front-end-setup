@@ -62,7 +62,7 @@ module.exports = {
             name: 'Main',
             filename: 'remoteEntry.js',
             remotes: {
-                MapApplication: 'MapApplication@https://localhost:8888/remoteEntry.js'
+                MapApplication: 'MapApplication@https://micro-fe-provider.web.app/remoteEntry.js'
             },
             shared: {
                 ...dependencies,
