@@ -4,6 +4,8 @@ import Header from './Header';
 import Icons from './Icons';
 import Routes from './Routes';
 import Sidebar from './Sidebar';
+import useAction from '../hooks/useAction';
+import { setUser } from '../store/session/actions';
 
 const appStyles: React.CSSProperties = {
     display: 'flex',
@@ -20,6 +22,10 @@ const mainStyles = {
 };
 
 const App = () => {
+    const setUserAction = useAction(setUser);
+    React.useEffect(() => {
+        setUserAction({ name: 'John Doe', email: 'john.doe@test.com' });
+    }, []);
     return (
         <>
             <Icons />
